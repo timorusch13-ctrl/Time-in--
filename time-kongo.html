@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time in Kongo</title>
+</head>
+<body>
+    <style>body { background-color: #657c92; }</style>
+    <H1>Time in Kongo</H1>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeit</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Uhrzeit im Kongo</title>
+</head>
+<body>
+
+    <h3>Time in Kinshasa/Brazzaville (Kongo):</h3>
+    <p id="kongo-uhrzeit">Lade Uhrzeit...</p>
+
+    <script>
+        function zeigeKongoUhrzeitManuell() {
+            const jetztLokal = new Date();
+            const utcMilliseconds = jetztLokal.getTime() + (jetztLokal.getTimezoneOffset() * 60000);
+
+            // Kongo (Westen) ist UTC+1. Wir fügen 1 Stunde in Millisekunden hinzu
+            const kongoOffsetMilliseconds = 1 * 60 * 60 * 1000; // 1 Stunde
+
+            const kongoMilliseconds = utcMilliseconds + kongoOffsetMilliseconds;
+            const kongoZeit = new Date(kongoMilliseconds);
+
+            const stunden = kongoZeit.getHours().toString().padStart(2, '0');
+            const minuten = kongoZeit.getMinutes().toString().padStart(2, '0');
+            const sekunden = kongoZeit.getSeconds().toString().padStart(2, '0');
+            
+            document.getElementById('kongo-uhrzeit').innerHTML = stunden + ":" + minuten + ":" + sekunden + " (Kongo UTC+1)";
+        }
+
+        setInterval(zeigeKongoUhrzeitManuell, 1000);
+        zeigeKongoUhrzeitManuell();
+    </script>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>back-button</title>
+</head>
+<body>
+    
+ <!-- Der Container umschließt den Link und sorgt für die Positionierung -->
+    <div class="bottom-left-container">
+        <a href="home-page.html" class="back-button">
+            Back
+        </a>
+    </div>
+    <style>
+        .bottom-left-container {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        .back-button {
+            background-color: #4c4e85;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+    </style>
+</body>
+</html>
