@@ -3,41 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Time Page</title>
+    <title>Time-Austria</title>
+    <style>body { background-color: #657c92; }</style>
+    <H1>Time in Austria</H1>
+
+
+</head><body>
+   <!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Aktuelle Uhrzeit</title>
 </head>
 <body>
-    <h1>Time Page</h1>
-    <p>Time of the world</p>
+    <h3>Aktuelle Uhrzeit:</h3>
+    <!-- Hier wird die Uhrzeit angezeigt -->
+    <p id="uhrzeit">Lade Uhrzeit...</p>
 
-    <a href="time-austria.html" style="text-decoration: none;">
-      <button type="button" style="background-color: #4c4e85; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer;">
-        Time in Austria
-      </button>
-    </a>
-<style>body { background-color: #657c92; }</style>
+    <!-- Einbindung des JavaScripts -->
+    <script>
+        // Der JavaScript-Code kann hier direkt eingefügt werden
+        function zeigeUhrzeit() {
+            const jetzt = new Date();
+            const stunden = jetzt.getHours().toString().padStart(2, '0');
+            const minuten = jetzt.getMinutes().toString().padStart(2, '0');
+            const sekunden = jetzt.getSeconds().toString().padStart(2, '0');
+            
+            document.getElementById('uhrzeit').innerHTML = stunden + ":" + minuten + ":" + sekunden;
+        }
 
- <a href="time-dubai.html" style="text-decoration: none;">
-      <button type="button" style="background-color: #4c4e85; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer;">
-        Time in Dubai
-      </button>
-    </a>
+        // Aktualisiert die Uhrzeit jede Sekunde
+        setInterval(zeigeUhrzeit, 1000);
+        
+        // Zeigt die Uhrzeit sofort beim Laden der Seite an
+        zeigeUhrzeit();
+    </script>
 
-    
-<!DOCTYPE html>
-<html lang="en">
+     <!DOCTYPE html>
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Button unten links</title>
+    <style>
+        /* Der neue Container für die Positionierung */
+        .bottom-left-container {
+            position: fixed; /* Fixiert die Position relativ zum Browserfenster */
+            bottom: 20px;    /* Abstand vom unteren Rand: 20 Pixel */
+            left: 20px;      /* Abstand vom linken Rand: 20 Pixel */
+            /* Sorgt dafür, dass der Button über anderen Elementen liegt (optional) */
+            z-index: 1000;
+        }
+
+        /* Der Stil für den Button selbst, unverändert */
+        .back-button {
+            background-color: #4c4e85;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none; /* Stellt sicher, dass keine Unterstreichung sichtbar ist */
+            display: inline-block; /* Für die korrekte Darstellung des a-Tags als Button */
+        }
+    </style>
 </head>
 <body>
-    <a href="time-kongo.html" style="text-decoration: none;">
-      <button type="button" style="background-color: #4c4e85; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer;">
-        Time in Kongo
-      </button>
-    </a>
-</body>
-</html>
+
+    <!-- Der Container umschließt den Link und sorgt für die Positionierung -->
+    <div class="bottom-left-container">
+        <a href="home-page.html" class="back-button">
+            Back
+        </a>
+    </div>
 
 </body>
 </html>
