@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time in Australia</title>
+</head>
+<body>
+    <H1>Time in Australia</H1>
+
+<style>body { background-color: #657c92; }</style>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeit</title>
+</head>
+<body>
+    
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Uhrzeit in Australien (Sydney)</title>
+</head>
+<body>
+
+    <h3>Uhrzeit in Sydney, Australien:</h3>
+    <p id="australien-uhrzeit">Lade Uhrzeit...</p>
+
+    <script>
+        function zeigeAustralienUhrzeitManuell() {
+            const jetztLokal = new Date();
+            const utcMilliseconds = jetztLokal.getTime() + (jetztLokal.getTimezoneOffset() * 60000);
+
+            // Australien (Sydney) ist UTC+10. Wir fügen 10 Stunden in Millisekunden hinzu
+            const australienOffsetMilliseconds = 10 * 60 * 60 * 1000; // 10 Stunden
+
+            const australienMilliseconds = utcMilliseconds + australienOffsetMilliseconds;
+            const australienZeit = new Date(australienMilliseconds);
+
+            const stunden = australienZeit.getHours().toString().padStart(2, '0');
+            const minuten = australienZeit.getMinutes().toString().padStart(2, '0');
+            const sekunden = australienZeit.getSeconds().toString().padStart(2, '0');
+            
+            document.getElementById('australien-uhrzeit').innerHTML = stunden + ":" + minuten + ":" + sekunden + " (Sydney AEST)";
+        }
+
+        setInterval(zeigeAustralienUhrzeitManuell, 1000);
+        zeigeAustralienUhrzeitManuell();
+    </script>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Back</title>
+</head>
+<body>
+    
+<!-- Der Container umschließt den Link und sorgt für die Positionierung -->
+    <div class="bottom-left-container">
+        <a href="home-page.html" class="back-button">
+            Back
+        </a>
+    </div>
+    <style>
+        .bottom-left-container {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        .back-button {
+            background-color: #4c4e85;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+    </style>
+
+</body>
+</html>
+</html>
+</html>

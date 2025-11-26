@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>body { background-color: #657c92; }</style>
+    <h1>Time in Japan</h1>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeit</title>
+</head>
+<body>
+    
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Uhrzeit in Japan</title>
+</head>
+<body>
+
+    <h3>Uhrzeit in Japan (Tokio):</h3>
+    <p id="japan-uhrzeit">Lade Uhrzeit...</p>
+
+    <script>
+        function zeigeJapanUhrzeitManuell() {
+            const jetztLokal = new Date();
+            const utcMilliseconds = jetztLokal.getTime() + (jetztLokal.getTimezoneOffset() * 60000);
+
+            // Japan ist UTC+9. Wir fügen 9 Stunden in Millisekunden hinzu
+            const japanOffsetMilliseconds = 9 * 60 * 60 * 1000; // 9 Stunden
+
+            const japanMilliseconds = utcMilliseconds + japanOffsetMilliseconds;
+            const japanZeit = new Date(japanMilliseconds);
+
+            const stunden = japanZeit.getHours().toString().padStart(2, '0');
+            const minuten = japanZeit.getMinutes().toString().padStart(2, '0');
+            const sekunden = japanZeit.getSeconds().toString().padStart(2, '0');
+            
+            document.getElementById('japan-uhrzeit').innerHTML = stunden + ":" + minuten + ":" + sekunden + " (Japan JST)";
+        }
+
+        setInterval(zeigeJapanUhrzeitManuell, 1000);
+        zeigeJapanUhrzeitManuell();
+    </script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<!-- Der Container umschließt den Link und sorgt für die Positionierung -->
+    <div class="bottom-left-container">
+        <a href="home-page.html" class="back-button">
+            Back
+        </a>
+    </div>
+    <style>
+        .bottom-left-container {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        .back-button {
+            background-color: #4c4e85;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+    </style>
+
+</body>
+</html>
