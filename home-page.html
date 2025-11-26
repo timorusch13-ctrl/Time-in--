@@ -90,8 +90,84 @@
 </html>
 
 
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="styles.css">
+
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Hintergrund nach Mausposition</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1></h1>
+    <!-- Ihre Buttons und anderer Inhalt bleiben hier unverändert -->
 </body>
 </html>
+
+<script>
+    // Abstand von der Oberkante und Breite der Mittelzone in Pixeln
+    const proximity = 250; 
+
+    const body = document.body;
+
+    document.addEventListener('mousemove', (event) => {
+        const viewportWidth = window.innerWidth;
+        const mouseYFromTop = event.clientY; 
+        const mouseX = event.clientX; // X-Position der Maus
+
+        // 1. Bedingung für OBEN LINKS
+        const isNearTopLeft = (mouseYFromTop < proximity && mouseX < proximity);
+        
+        // 2. Bedingung für OBEN RECHTS
+        const isNearTopRight = (mouseYFromTop < proximity && (viewportWidth - mouseX) < proximity);
+
+        // 3. Bedingung für OBEN MITTE
+        // Prüft, ob die Maus links von der rechten Mitte UND rechts von der linken Mitte ist
+        const isNearTopCenter = (mouseYFromTop < proximity && 
+                                 mouseX > (viewportWidth / 2) - (proximity / 2) && 
+                                 mouseX < (viewportWidth / 2) + (proximity / 2));
+
+        // Prüft, ob EINE der Bedingungen WAHR ist (|| = ODER)
+        if (isNearTopLeft || isNearTopRight || isNearTopCenter) {
+            if (!body.classList.contains('is-near-corner')) {
+                body.classList.add('is-near-corner');
+            }
+        } else {
+            if (body.classList.contains('is-near-corner')) {
+                body.classList.remove('is-near-corner');
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
+</script>
+
+
+
+
 
 </body>
 </html>
