@@ -1,0 +1,56 @@
+/* --- Standardzustand des Hintergrunds --- */
+body {
+    /* Ausgangsfarben (Grau/Schwarz) */
+    background: linear-gradient(-45deg, #424242, #616161, #212121, #000000);
+    background-size: 400% 400%;
+    animation: gradient-shift 18s ease infinite alternate; /* LANGSAME Animation */
+    height: 100vh;
+    margin: 0;
+    
+    /* Textfarbe und Positionierung */
+    color: #ffffff; /* Stellt sicher, dass Ihr Text weiß ist und bleibt */
+    font-family: sans-serif;
+    padding: 20px;
+    
+    /* Wichtig: Erlaubt uns, einen zweiten, schwarzen Hintergrund darüber zu legen */
+    position: relative; 
+}
+
+/* --- Ein Overlay-Element, das den schwarzen Hintergrund hält --- */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0); /* Startet komplett transparent */
+    transition: background-color 0.8s ease-in-out; /* Weiche Überblendung */
+    pointer-events: none; /* WICHTIG: Klicks gehen durch das Overlay hindurch zu den Buttons */
+    z-index: -1; /* Legt das Overlay hinter den Inhalt (der Inhalt hat standardmäßig z-index: 0) */
+}
+
+/* --- Zustand, wenn die Maus in der Nähe der Ecke ist --- */
+body.is-near-corner a::before {
+    /* Die Animationsdauer wird schneller */
+    animation-duration: 0.5s; 
+}
+
+/* Der ::before Pseudo-Selektor wird jetzt schwarz */
+body.is-near-corner::before {
+    background-color: rgba(0, 0, 0, 1); /* Wird komplett schwarz */
+}
+
+
+/* Die Keyframes steuern die Bewegung des Hintergrunds */
+@keyframes gradient-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
