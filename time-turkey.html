@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time in Turkey</title>
+</head>
+<body>
+    <H1>Time in Turkey</H1>
+
+
+<style>body { background-color: #657c92; }</style>
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Uhrzeit in der Türkei</title>
+</head>
+<body>
+
+    <h3>Uhrzeit in der Türkei (Istanbul):</h3>
+    <p id="tuerkei-uhrzeit">Lade Uhrzeit...</p>
+
+    <script>
+        function zeigeTuerkeiUhrzeitManuell() {
+            const jetztLokal = new Date();
+            const utcMilliseconds = jetztLokal.getTime() + (jetztLokal.getTimezoneOffset() * 60000);
+
+            // Türkei ist UTC+3. Wir fügen 3 Stunden in Millisekunden hinzu
+            const tuerkeiOffsetMilliseconds = 3 * 60 * 60 * 1000; // 3 Stunden
+
+            const tuerkeiMilliseconds = utcMilliseconds + tuerkeiOffsetMilliseconds;
+            const tuerkeiZeit = new Date(tuerkeiMilliseconds);
+
+            const stunden = tuerkeiZeit.getHours().toString().padStart(2, '0');
+            const minuten = tuerkeiZeit.getMinutes().toString().padStart(2, '0');
+            const sekunden = tuerkeiZeit.getSeconds().toString().padStart(2, '0');
+            
+            document.getElementById('tuerkei-uhrzeit').innerHTML = stunden + ":" + minuten + ":" + sekunden + " (Türkei TRT)";
+        }
+
+        setInterval(zeigeTuerkeiUhrzeitManuell, 1000);
+        zeigeTuerkeiUhrzeitManuell();
+    </script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Back</title>
+</head>
+<body>
+    <!-- Der Container umschließt den Link und sorgt für die Positionierung -->
+    <div class="bottom-left-container">
+        <a href="home-page.html" class="back-button">
+            Back
+        </a>
+    </div>
+    <style>
+        .bottom-left-container {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        .back-button {
+            background-color: #4c4e85;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+    </style>
+
+</body>
+</html>
+
+</body>
+</html>
