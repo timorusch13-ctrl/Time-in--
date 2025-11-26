@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time in Dubai</title>
+</head>
+<body>
+    <h1>Time in Dubai</h1>
+    <h2></h2>
+    <style>body { background-color: #657c92; }</style>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title><h2></h2></title>
+</head>
+<body>
+
+    <h1></h1>
+    <p id="dubai-uhrzeit">Lade Uhrzeit...</p>
+
+    <script>
+        function zeigeDubaiUhrzeitManuell() {
+            // Aktuelles Datum/Uhrzeit-Objekt vom PC des Nutzers
+            const jetztLokal = new Date();
+
+            // getTimezoneOffset() gibt die Differenz in Minuten zwischen UTC und lokaler Zeit zurück.
+            // Wir berechnen die UTC-Zeit: lokale Zeit + lokale Abweichung
+            const utcMilliseconds = jetztLokal.getTime() + (jetztLokal.getTimezoneOffset() * 60000);
+
+            // Dubai ist UTC+4. Wir fügen 4 Stunden in Millisekunden hinzu (4 * 60 * 60 * 1000)
+            const dubaiOffsetMilliseconds = 4 * 60 * 60 * 1000;
+
+            // Die endgültige Zeit in Dubai
+            const dubaiMilliseconds = utcMilliseconds + dubaiOffsetMilliseconds;
+            const dubaiZeit = new Date(dubaiMilliseconds);
+
+            // Zeit formatieren
+            const stunden = dubaiZeit.getHours().toString().padStart(2, '0');
+            const minuten = dubaiZeit.getMinutes().toString().padStart(2, '0');
+            const sekunden = dubaiZeit.getSeconds().toString().padStart(2, '0');
+            
+            document.getElementById('dubai-uhrzeit').innerHTML = stunden + ":" + minuten + ":" + sekunden + " (Dubai)";
+        }
+
+        // Aktualisiert die Uhrzeit jede Sekunde
+        setInterval(zeigeDubaiUhrzeitManuell, 1000);
+        
+        // Zeigt die Uhrzeit sofort beim Laden der Seite an
+        zeigeDubaiUhrzeitManuell();
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button unten links</title>
+    <style>
+        /* Der neue Container für die Positionierung */
+        .bottom-left-container {
+            position: fixed; /* Fixiert die Position relativ zum Browserfenster */
+            bottom: 20px;    /* Abstand vom unteren Rand: 20 Pixel */
+            left: 20px;      /* Abstand vom linken Rand: 20 Pixel */
+            /* Sorgt dafür, dass der Button über anderen Elementen liegt (optional) */
+            z-index: 1000;
+        }
+
+        /* Der Stil für den Button selbst, unverändert */
+        .back-button {
+            background-color: #4c4e85;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none; /* Stellt sicher, dass keine Unterstreichung sichtbar ist */
+            display: inline-block; /* Für die korrekte Darstellung des a-Tags als Button */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Der Container umschließt den Link und sorgt für die Positionierung -->
+    <div class="bottom-left-container">
+        <a href="home-page.html" class="back-button">
+            Back
+        </a>
+    </div>
+
+</body>
+</html>
