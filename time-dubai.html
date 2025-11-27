@@ -99,5 +99,34 @@
         </a>
     </div>
 
+<link rel="stylesheet" href="styles.css">
+
+
+
+<script>
+    // HIER STELLEN SIE DEN ABSTAND IN PIXELN EIN:
+    const cornerProximity = 250; // Wenn Sie 250 Pixel von der Ecke entfernt sind, startet der Effekt
+
+    const body = document.body;
+
+    document.addEventListener('mousemove', (event) => {
+        const mouseYFromBottom = window.innerHeight - event.clientY; 
+        const mouseXFromLeft = event.clientX; 
+
+        // Die Bedingung verwendet diesen Wert zur Prüfung
+        if (mouseYFromBottom < cornerProximity && mouseXFromLeft < cornerProximity) {
+            if (!body.classList.contains('is-near-corner')) {
+                body.classList.add('is-near-corner');
+            }
+        } else {
+            if (body.classList.contains('is-near-corner')) {
+                body.classList.remove('is-near-corner');
+            }
+        }
+    });
+</script>
+
+
+
 </body>
 </html>
